@@ -15,9 +15,27 @@
             {{ post.body|safe }}
         </div>
     </article>
-    
-    {% endblock main %}
+    <section>
+        <!-- 来必力City版安装代码 -->
+        <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTY4Ny84MjUx">
+            <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
 
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+            </script>
+        </div>
+    </section>
+    <!-- City版安装代码已完成 -->
+    {% endblock main %}
+    
     {% block toc %}
     <div class="widget widget-content">
         <h3 class="widget-title">文章目录</h3>
