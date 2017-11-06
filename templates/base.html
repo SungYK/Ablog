@@ -1,7 +1,7 @@
-{% load staticfiles %}
-{% load blog_tags %}
+{% load staticfiles %} {% load blog_tags %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Patrick's rockhouse</title>
 
@@ -11,7 +11,7 @@
 
     <!-- css -->
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'blog/css/pace.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/highlights/github.css' %}">
@@ -23,102 +23,119 @@
 </head>
 
 <body>
-<div class="container">
-    <header id="site-header">
-        <div class="row">
-            <div class="col-md-4 col-sm-5 col-xs-8">
-                <div class="logo">
-                    <h1><a href="{% url 'blog:index' %}"><b>Patrick's</b> rockhouse</a></h1>
-                </div>
-            </div><!-- col-md-4 -->
-            <div class="col-md-8 col-sm-7 col-xs-4">
-                <nav class="main-nav" role="navigation">
-                    <div class="navbar-header">
-                        <button type="button" id="trigger-overlay" class="navbar-toggle">
-                            <span class="ion-navicon"></span>
-                        </button>
-                    </div>
-
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="首页">首页</a></li>
-                            <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="博客">博客</a></li>
-                            <li class="cl-effect-11"><a href="{% url 'blog:about' %}" data-hover="关于">关于</a></li>
-                            <li class="cl-effect-11"><a href="mailto:cirillaye@outlook.com" data-hover="联系">联系</a></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </nav>
-                <div id="header-search-box">
-                    <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
-                    <div id="search-form" class="search-form">
-                        <form role="search" method="get" id="searchform" action="#">
-                            <input type="search" placeholder="搜索" required>
-                            <button type="submit"><span class="ion-ios-search-strong"></span></button>
-                        </form>
-                    </div>
-                </div>
-            </div><!-- col-md-8 -->
-        </div>
-    </header>
-</div>
-
-<div class="content-body">
     <div class="container">
-        <div class="row">
-            <main class="col-md-8">
-                {% block main %}
-                {% endblock main %}
-            </main>
-            <aside class="col-md-4">
-                {% block toc %}
-                {% endblock toc %}
-                <div class="widget widget-recent-posts">
-                    <h3 class="widget-title">最新</h3>
-                    {% get_recent_posts as recent_post_list %}
-                    <ul>
-                        {% for post in recent_post_list %}
-                        <li>
-                            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                        </li>
-                        {% empty %}
-                        <li>
-                            not yet
-                        </li>
-                        {% endfor %}
-                    </ul>
+        <header id="site-header">
+            <div class="row">
+                <div class="col-md-4 col-sm-5 col-xs-8">
+                    <div class="logo">
+                        <h1>
+                            <a href="{% url 'blog:index' %}">
+                                <b>Patrick's</b> rockhouse</a>
+                        </h1>
+                    </div>
                 </div>
-                <div class="widget widget-archives">
-                    <h3 class="widget-title">归档</h3>
-                    {% archives as date_list %}
-                    <ul>
-                        {% for date in date_list %}
-                        <li>
-                            <a href="{% url 'blog:archievs' date.year date.month %}">{{ date.year }} 年 {{ date.month }} 月</a>
-                        </li>
-                        {% empty %}
-                        <li>
-                            not yet
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                <!-- col-md-4 -->
+                <div class="col-md-8 col-sm-7 col-xs-4">
+                    <nav class="main-nav" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" id="trigger-overlay" class="navbar-toggle">
+                                <span class="ion-navicon"></span>
+                            </button>
+                        </div>
 
-                <div class="widget widget-category">
-                    <h3 class="widget-title">分类</h3>
-                    {% get_category as category_list %}
-                    <ul>
-                        {% for category in category_list %}
-                        <li>
-                            <a href="{% url 'blog:category' category.pk %}">{{ category.name }}</a>
-                        </li>
-                        {% empty %}
-                        <li>
-                            not yet
-                        </li>
-                        {% endfor %}
-                    </ul>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="cl-effect-11">
+                                    <a href="{% url 'blog:index' %}" data-hover="首页">首页</a>
+                                </li>
+                                <li class="cl-effect-11">
+                                    <a href="{% url 'blog:index' %}" data-hover="博客">博客</a>
+                                </li>
+                                <li class="cl-effect-11">
+                                    <a href="{% url 'blog:about' %}" data-hover="关于">关于</a>
+                                </li>
+                                <li class="cl-effect-11">
+                                    <a href="mailto:cirillaye@outlook.com" data-hover="联系">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </nav>
+                    <div id="header-search-box">
+                        <a id="search-menu" href="#">
+                            <span id="search-icon" class="ion-ios-search-strong"></span>
+                        </a>
+                        <div id="search-form" class="search-form">
+                            <form role="search" method="get" id="searchform" action="#">
+                                <input type="search" placeholder="搜索" required>
+                                <button type="submit">
+                                    <span class="ion-ios-search-strong"></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <!--
+                <!-- col-md-8 -->
+            </div>
+        </header>
+    </div>
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8">
+                    {% block main %} {% endblock main %}
+                </main>
+                <aside class="col-md-4 aside">
+                    <div class="aside">
+                        {% block toc %} {% endblock toc %}
+                        <div class="widget widget-recent-posts">
+                            <h3 class="widget-title">最新</h3>
+                            {% get_recent_posts as recent_post_list %}
+                            <ul>
+                                {% for post in recent_post_list %}
+                                <li>
+                                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                                </li>
+                                {% empty %}
+                                <li>
+                                    not yet
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="widget widget-archives">
+                            <h3 class="widget-title">归档</h3>
+                            {% archives as date_list %}
+                            <ul>
+                                {% for date in date_list %}
+                                <li>
+                                    <a href="{% url 'blog:archievs' date.year date.month %}">{{ date.year }} 年 {{ date.month }} 月</a>
+                                </li>
+                                {% empty %}
+                                <li>
+                                    not yet
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="widget widget-category">
+                            <h3 class="widget-title">分类</h3>
+                            {% get_category as category_list %}
+                            <ul>
+                                {% for category in category_list %}
+                                <li>
+                                    <a href="{% url 'blog:category' category.pk %}">{{ category.name }}</a>
+                                </li>
+                                {% empty %}
+                                <li>
+                                    not yet
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <!--
                 <div class="widget widget-tag-cloud">
                     <h3 class="widget-title">标签云</h3>
                     <ul>
@@ -155,41 +172,54 @@
                     </ul>
                 </div>
                 -->
-                <div class="rss">
-                    <a href=""><span class="ion-social-rss-outline"></span> RSS 订阅</a>
-                </div>
-            </aside>
-        </div>
-    </div>
-</div>
-<footer id="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p class="copyright">&copy 2017 Yukai Song
-                    <br>Blog theme modified from Black & White, Designed by Technext Limited 
-                </p>
-                
+                        <div class="rss">
+                            <a href="">
+                                <span class="ion-social-rss-outline"></span> RSS 订阅</a>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </div>
     </div>
-</footer>
+    <footer id="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="copyright">&copy 2017 Yukai Song
+                        <br>Blog theme modified from Black & White, Designed by Technext Limited
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
-<!-- Mobile Menu -->
-<div class="overlay overlay-hugeinc">
-    <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
-    <nav>
-        <ul>
-            <li><a href="{% url 'blog:index' %}">首页</a></li>
-            <li><a href="{% url 'blog:index' %}">博客</a></li>
-            <li><a href="{% url 'blog:about' %}">关于</a></li>
-            <li><a href="mailto:cirillaye@outlook.com">联系</a></li>
-        </ul>
-    </nav>
-</div>
+    <!-- Mobile Menu -->
+    <div class="overlay overlay-hugeinc">
+        <button type="button" class="overlay-close">
+            <span class="ion-ios-close-empty"></span>
+        </button>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'blog:index' %}">首页</a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:index' %}">博客</a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:about' %}">关于</a>
+                </li>
+                <li>
+                    <a href="mailto:cirillaye@outlook.com">联系</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
-<script src="{% static 'blog/js/script.js' %}"></script>
+    <script src="{% static 'blog/js/script.js' %}"></script>
 
 </body>
+
 </html>
