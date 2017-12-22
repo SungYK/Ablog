@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block main %}
+    
     <article class="detail">
         <header class="entry-header">
             <h1 class="entry-title">{{ post.title }}</h1>
@@ -15,9 +17,15 @@
         <div class="entry-content clearfix">
             {{ post.body|safe }}
         </div>
+        
     </article>
     <section>
+        <div id="alertWall" class="alert alert-danger" role="alert" style="display:none;">
+            Lord I'm five hundred miles from Disqus
+        </div>
         <div id="disqus_thread"></div>
+        <script src="{% static 'blog/js/disqus_onload.js' %}"></script>
+        <!--
         <script>
         
         /**
@@ -36,9 +44,9 @@
         (d.head || d.body).appendChild(s);
         })();
         </script>
-        
+        --> 
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                                    
+                               
     </section>
     <!-- City版安装代码已完成 -->
     {% endblock main %}
