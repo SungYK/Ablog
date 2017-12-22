@@ -34,6 +34,9 @@ class Post(models.Model):
     def increase_views(self):
         self.views += 1
         self.save(update_fields=['views'])
+    
+    class Meta:
+        ordering = ['-created_time']
 
 
     '''

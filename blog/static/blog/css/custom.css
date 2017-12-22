@@ -265,7 +265,7 @@ img {
 .post-date::after,
 .post-author::after,
 .comments-link::after {
-    content: ' |';
+    content: ' ';
     color: #000;
 }
 
