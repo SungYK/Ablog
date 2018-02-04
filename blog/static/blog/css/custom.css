@@ -261,6 +261,10 @@ img {
     color: #000;
 }
 
+.entry-content img{
+    text-align: center;
+}
+
 .post-category::after,
 .post-date::after,
 .post-author::after,
